@@ -1,0 +1,73 @@
+svg {
+  background-color: white;
+  border: 1px solid #ccc;
+}
+
+.node {
+  cursor: pointer;
+}
+
+.node circle {
+  transition: transform 0.2s;
+}
+
+.node circle:hover {
+  transform: scale(1.1);
+}
+
+.node text {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+.action-panel {
+  position: absolute;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10; /* Ensure the action panel is on top of the SVG */
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  margin-top: 10px;
+}
+
+.action-buttons button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 5px; /* Add space between buttons */
+}
+
+.action-buttons button:hover {
+  background-color: #0056b3;
+}
+
+.thought-organizer {
+  position: relative; /* Establish a positioning context */
+}
+
+.logout-button {
+  position: absolute; /* Position the button absolutely */
+  top: 10px; /* Distance from the top */
+  right: 10px; /* Distance from the right */
+  background-color: #db2121; /* Bootstrap primary color */
+  color: white; /* Text color */
+  border: none; /* Remove border */
+  padding: 8px 12px; /* Add some padding */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.logout-button:hover {
+  background-color: #d13c3c; /* Darker shade on hover */
+}
+
+

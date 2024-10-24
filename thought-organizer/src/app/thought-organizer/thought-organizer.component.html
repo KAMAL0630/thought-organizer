@@ -1,0 +1,27 @@
+<div class="thought-organizer" (click)="closeActionBox()">
+  <button class="logout-button" (click)="logout()">Logout</button>
+  <div #svgContainer></div>
+  
+  <div *ngIf="actionBoxPosition" 
+       class="action-panel" 
+       [ngStyle]="{ top: actionBoxPosition.y + 'px', left: actionBoxPosition.x + 'px' }" 
+       (click)="$event.stopPropagation()">
+    <div *ngIf="actionType === 'add'">
+      <input [(ngModel)]="inputValue" placeholder="New Thought"/>
+      <button (click)="submitAction()">Add</button>
+    </div>
+    <div *ngIf="actionType === 'edit'">
+      <input [(ngModel)]="inputValue" placeholder="Edit Thought"/>
+      <button (click)="submitAction()">Edit</button>
+    </div>
+    <div *ngIf="actionType === 'delete'">
+      <button (click)="submitAction()">Delete</button>
+    </div>
+    <div class="action-buttons">
+      <button (click)="performAction('add')">Add Thought</button>
+      <button (click)="performAction('edit')">Edit Thought</button>
+      <button (click)="performAction('delete')">Delete Thought</button>
+      <button (click)="performAction('link')">Link Thought</button>
+    </div>
+  </div>
+</div>
