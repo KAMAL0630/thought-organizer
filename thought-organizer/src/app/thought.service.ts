@@ -8,19 +8,31 @@ import { ThoughtNode } from './thought-organizer/thought-organizer.component';
 })
 export class ThoughtService {
   private apiUrl = 'http://localhost:5000/api/thoughts';
+  private authUrl = 'http://localhost:5000/api'; 
 
   constructor(private http: HttpClient) {}
 
-  
-  login(username: string, password: string): Observable<{ success: boolean; message: string }> {
-    return this.http.post<{ success: boolean; message: string }>('/api/login', { username, password });
+ 
+  register(username: string, password: string): Observable<{ success: boolean; message: string }> {
+    return this.http.post<{ success: boolean; message: string }>(`${this.authUrl}/register`, { username, password });
   }
 
-  getApplicationState(): Observable<ThoughtNode> {
-    return this.http.get<ThoughtNode>(`${this.apiUrl}/state`);
+
+  login(username: string, password: string): Observable<{ success: boolean; message: string; token: string }> {
+    return this.http.post<{ success: boolean; message: string; token: string }>(`${this.authUrl}/login`, { username, password });
   }
 
-  saveApplicationState(state: ThoughtNode): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/state`, state);
+
+  getApplicationState(username: string, token: string): Observable<ThoughtNode> {
+    return this.http.get<ThoughtNode>(`${this.apiUrl}/state`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+  }
+
+ 
+  saveApplicationState(state: ThoughtNode, token: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/state`, state, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
   }
 }

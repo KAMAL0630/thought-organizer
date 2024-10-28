@@ -1,0 +1,20 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card" style="width: 400px;">
+    <div class="card-body">
+      <h2 class="card-title text-center">Register</h2>
+      <form (submit)="onRegister()">
+        <div class="form-group">
+          <input type="text" [(ngModel)]="registerUsername" name="registerUsername" class="form-control" placeholder="Username" required>
+        </div>
+        <div class="form-group">
+          <input type="password" [(ngModel)]="registerPassword" name="registerPassword" class="form-control" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn btn-success btn-block">Create User</button>
+        <div *ngIf="registrationErrorMessage" class="text-danger text-center mt-2">{{ registrationErrorMessage }}</div>
+      </form>
+      <hr>
+      <h4 class="text-center"></h4>
+      <a routerLink="/" class="btn btn-link">Login</a> 
+    </div>
+  </div>
+</div>
