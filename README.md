@@ -1,4 +1,4 @@
-Here’s the updated README file, reflecting the recent changes, including the addition of the registration feature:
+
 
 ---
 
